@@ -1,95 +1,88 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<?php
+//$users=\App\Article::find(2)->users;
+//dump($users);
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+$file=Request::file('avatar');
+$filename=$file->getClientOriginalName();
+$path=$file->storeAs('images', $filename);
+//dump($path);
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+$request=Request::all();
+dump($request);
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
+//?>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PHP Test</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<div class="wrapper">
+    <main class="main-content">
+        <div class="my-profile">
+            <h2 class="heading">Мой профиль</h2>
+            <div class="profile">
+                <div class="avatar">
+                    <img src="img/image.jpg" alt="Аватар" class="avatar__pic">
                 </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="information">
+                    <div class="nickname">Nickname</div>
+                    <div class="user-name">
+                        <span class="name">Имя</span>
+                        <span class="surname">Фамилия</span>
+                    </div>
+                    <a href='tel:+11111111' class="phone">+1 111 11-11-11</a>
                 </div>
             </div>
         </div>
-    </body>
+        <div class='edit-profile'>
+            <h2 class="heading">Редактировать профиль</h2>
+            <form class='form' id='form' method='POST' enctype='multipart/form-data'>
+                 {{ csrf_field() }}
+                <ul class="form__list">
+                    <li class="form__item">
+                        <label class='form__label' for="nickname">Никнейм:</label>
+                        <input class='form__input' id='nickname' name='nickname' type="text">
+                    </li>
+                    <li class="form__item">
+                        <label class='form__label' for="name">Имя:</label>
+                        <input class='form__input' id='name' name='name' type="text">
+                    </li>
+                    <li class="form__item">
+                        <label class='form__label' for="surname">Фамилия:</label>
+                        <input class='form__input' id='surname' name='surname' type="text">
+                    </li>
+                    <li class="form__item">
+                        <label class='form__inline-label' for="avatar">Аватар:</label>
+                        <input class='form__inline-input' id='avatar' name='avatar' type="file" value='image/jpeg,image/png'>
+                    </li>
+                    <li class="form__item">
+                        <label class='form__label' for="phone">Телефон:</label>
+                        <input class='form__input' id='phone' name='phone' type="text">
+                    </li>
+                    <li class="form__item">
+                        <div class="form__title">Пол:</div>
+                        <label class='form__inline-label' for="male">Мужской</label>
+                        <input class='form__inline-input' name='sex' id='male' value='male' type="radio">
+                        <label class='form__inline-label' for="female">Женский</label>
+                        <input class='form__inline-input' name='sex' id='female' value='female' type="radio">
+                    </li>
+                    <li class="form__item">
+                        <label class='form__inline-label' for="showPhone">Я согласен получать email-рассылку</label>
+                        <input class='form__inline-input' name='showPhone' id='showPhone' type="checkbox">
+                    </li>
+                    <li class="form__item">
+                        <button class='form__button' type="submit">Отправить</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </main>
+</div>
+</body>
 </html>

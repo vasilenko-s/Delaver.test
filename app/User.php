@@ -16,7 +16,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'nickname', 'surname', 'phone',
+        'sex', 'showPhone', 'pathToAvatar'
     ];
 
     /**
@@ -27,4 +28,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //динамическое свойство, возвращает все статьи пользователя
+    public function articles(){
+        return $this->belongsToMany('App\Article');
+    }
 }
