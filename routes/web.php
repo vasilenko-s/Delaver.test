@@ -11,13 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'FormController@index');
 
-//Route::post('/', function (Request $request) {
-//    return view('welcome');
-//});
+//Route::post('/', 'FormController@index');
 
-//Route::post('/', );
-//});
+
+Route::post('/', ['uses'=>'FormController@store', 'as'=>'store']);
+
+

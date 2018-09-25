@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <?php
-//$users=\App\Article::find(2)->users;
-//dump($users);
 
-//dump($path);
-//
-//$request=Request::all();
-//dump($request);
+echo 'hello';
 
-//?>
+?>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -23,18 +18,6 @@
 </head>
 <body>
 
- {{--ошибки валидации формы--}}
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach($errors->all() as $error)
-                <li> {{ $error }}</li>
-            @endforeach
-        </ul>
-
-
-    </div>
-@endif
 
 
 <div class="wrapper">
@@ -58,19 +41,19 @@
         <div class='edit-profile'>
             <h2 class="heading">Редактировать профиль</h2>
             <form class='form' id='form' method='POST' enctype='multipart/form-data'>
-                 {{ csrf_field() }}
+                {{ csrf_field() }}
                 <ul class="form__list">
                     <li class="form__item">
                         <label class='form__label' for="nickname">Никнейм:</label>
-                        <input class='form__input' id='nickname' name='nickname' type="text">
+                        <input class='form__input' id='nickname' name='nickname' type="text" value="{{ old('nickname') }}" >
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="name">Имя:</label>
-                        <input class='form__input' id='name' name='name' type="text">
+                        <input class='form__input' id='name' name='name' type="text" value="{{ old('name') }}">
                     </li>
                     <li class="form__item">
                         <label class='form__label' for="surname">Фамилия:</label>
-                        <input class='form__input' id='surname' name='surname' type="text">
+                        <input class='form__input' id='surname' name='surname' type="text" value="{{ old('surname') }}">
                     </li>
                     <li class="form__item">
                         <label class='form__inline-label' for="avatar">Аватар:</label>
