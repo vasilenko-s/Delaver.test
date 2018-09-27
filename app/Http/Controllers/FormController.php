@@ -18,14 +18,14 @@ class FormController extends Controller
     public function store(Request $request){
 
         //Validation
-//        $request->validate([
-//            'nickname' => 'required|max:20',
-//            'name' => 'required',
-//            'surname' => 'required',
-//            'phone' => 'required',
-//            'sex' => 'required',
-//             'avatar' => 'required'
-//        ]);
+        $request->validate([
+            'nickname' => 'required|max:20',
+            'name' => 'required',
+            'surname' => 'required',
+            'phone' => 'required',
+            'sex' => 'required',
+             'avatar' => 'required'
+        ]);
 
         //Save avatar
             $file=$request->file('avatar');
@@ -46,7 +46,6 @@ class FormController extends Controller
 
         //редирект на страницу с введенными данными
        return view('store')->withFilename($filename);
-
 
     }
 }
