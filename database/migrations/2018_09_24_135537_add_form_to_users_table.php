@@ -22,8 +22,7 @@ class AddFormToUsersTable extends Migration
             $table->string('phone')->nullable();
             $table->string('sex')->nullable();
             $table->string('showPhone')->default('off');
-            $table->string('pathToAvatar')->nullable();
-
+            $table->string('filenameAvatar')->nullable();
         });
     }
 
@@ -41,7 +40,7 @@ class AddFormToUsersTable extends Migration
             $table->dropColumn('phone');
             $table->dropColumn('sex');
             $table->dropColumn('showPhone');
-            $table->dropColumn('pathToAvatar');
+            $table->dropColumn('filenameAvatar');
         });
     }
 }

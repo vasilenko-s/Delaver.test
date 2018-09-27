@@ -43,7 +43,7 @@
             <h2 class="heading">Мой профиль</h2>
             <div class="profile">
                 <div class="avatar">
-                    <img src="img/image.jpg" alt="Аватар" class="avatar__pic">
+                    <img src="storage/img/image.jpg" alt="Аватар" class="avatar__pic">
                 </div>
                 <div class="information">
                     <div class="nickname">Nickname</div>

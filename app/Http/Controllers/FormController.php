@@ -17,7 +17,7 @@ class FormController extends Controller
 
     public function store(Request $request){
 
-//        //Validation
+        //Validation
 //        $request->validate([
 //            'nickname' => 'required|max:20',
 //            'name' => 'required',
@@ -26,28 +26,27 @@ class FormController extends Controller
 //            'sex' => 'required',
 //             'avatar' => 'required'
 //        ]);
-//
-//        //Save avatar
-//            $file=$request->file('avatar');
-//            $filename=$file->getClientOriginalName();
-//            $pathToAvatar=$file->storeAs('images', $filename);
-//
-//        // save form
-//        User::create([
-//            'nickname' => $request->input('nickname'),
-//            'name' => $request->input('name'),
-//            'surname' => $request->input('surname'),
-//            'phone' => $request->input('phone'),
-//            'sex' => $request->input('sex'),
-//            'showPhone' => $request->input('showPhone', 'off'),
-//            'pathToAvatar' => $pathToAvatar
-//        ]);
+
+        //Save avatar
+            $file=$request->file('avatar');
+            $filename=$file->getClientOriginalName();
+            $file->storeAs('public/img', $filename);
+
+        // save form's data
+        User::create([
+            'nickname' => $request->input('nickname'),
+            'name' => $request->input('name'),
+            'surname' => $request->input('surname'),
+            'phone' => $request->input('phone'),
+            'sex' => $request->input('sex'),
+            'showPhone' => $request->input('showPhone', 'off'),
+            'filenameAvatar' => $filename
+
+        ]);
 
         //редирект на страницу с введенными данными
-//        return view('store');
+       return view('store')->withFilename($filename);
 
-       return view('store');
-       //->withInput();
 
     }
 }
