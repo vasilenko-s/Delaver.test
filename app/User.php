@@ -16,8 +16,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'nickname', 'surname', 'phone',
-        'sex', 'showPhone', 'filenameAvatar'
+        'name', 'nickname', 'surname', 'phone',
+        'sex', 'showPhone', 'filenameAvatar',
+        'experience'
     ];
 
     /**
@@ -28,9 +29,30 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
+    //п.1-3
     //динамическое свойство, возвращает все статьи пользователя
     public function articles(){
         return $this->belongsToMany('App\Article');
     }
+
+    //п.4
+    static function userExp(){
+
+        $user = User::find(1);
+
+        $result=$user->experience;
+
+        dump($result);
+
+        dump($result);
+
+       //TODO
+        //асинхронный метод меняет опыть на случайное число
+
+        //TODO
+        //еще раз выводится опыт, спустя промежуток времени
+
+        return;
+    }
+
 }

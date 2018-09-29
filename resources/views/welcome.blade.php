@@ -8,6 +8,25 @@
 //$request=Request::all();
 //dump($request);
 
+    use App\Article;
+    use App\User;
+
+//Article::destroy(2);
+//
+//$article = Article::withTrashed()->find(2);
+//
+//$user = User::find(1);
+//
+////dump($user);
+//
+//dump($article->isAuthor($user));
+
+        User::userExp();
+
+
+
+//dump($article->users);
+
 //?>
 <html lang="ru">
 <head>
