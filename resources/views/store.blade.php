@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <?php
-
-echo 'hello';
-
-$file = Request::file('avatar');
-
-dump( $filename);
-
+//
 ?>
 <html lang="ru">
 <head>

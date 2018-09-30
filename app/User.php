@@ -35,24 +35,18 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Article');
     }
 
-    //п.4
+    //п.5
     static function userExp(){
 
         $user = User::find(1);
 
         $result=$user->experience;
 
-        dump($result);
-
-        dump($result);
-
-       //TODO
-        //асинхронный метод меняет опыть на случайное число
-
         //TODO
-        //еще раз выводится опыт, спустя промежуток времени
+        //без п.5.3
+        //асинхронный метод меняет опыть на случайное число..
 
-        return;
+        return $result;
     }
 
 }
