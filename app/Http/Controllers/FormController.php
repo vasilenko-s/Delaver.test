@@ -28,6 +28,7 @@ class FormController extends Controller
         ]);
 
         //Save avatar
+
             $file=$request->file('avatar');
             $filename=$file->getClientOriginalName();
             $file->storeAs('public/img', $filename);
